@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+  Página principal do portfólio
+  - Estrutura simples: header (navegação), main (entrada com texto e imagem) e footer
+  - Pequenas "bolinhas" (peixes) são elementos posicionados dinamicamente pelo `script.js`
+  - As imagens responsivas para a seção de foto estão dentro de `<picture>` para funcionar corretamente
+-->
+<html lang="pt-br">
+<head>
+    <!-- Metadados básicos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial - Conceição Ramos</title>
+    <!-- Link para estilos principais -->
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <!-- HEADER: navegação principal -->
+    <header>
+        <div id="navbar">
+            <nav>
+                <!-- links de navegação simples apontando para páginas estáticas -->
+                <a href="index.html">Home</a>
+                <a href="projetos.html">Projetos</a>
+                <a href="contato.html">Sobre mim</a>
+                <a href="contato.html">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN: área principal da página -->
+    <main>
+        <!--
+          Elementos de efeito: .fish
+          - São elementos vazios (`<div class="fish"></div>`) usados para renderizar os peixinhos
+          - O `script.js` posiciona e anima estes elementos. Quantidade atual: 8 (pode ser ajustada)
+        -->
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <!-- Entrada principal: texto à esquerda, imagem à direita -->
+        <div id="entrada">
+            <div class="texto">
+                <h1>Conceição Ramos</h1>
+                <!-- Parágrafo de apresentação -->
+                <p class="apresentacao">Olá! Sou uma Analista de Sistemas em transição para Desenvolvimento Front-End.<br>
+                Apaixonada por tecnologia, aprendizado contínuo e por transformar ideias em experiências digitais.</p>
+            </div>
+
+            <!-- Figura responsiva: usa <picture> para trocar imagens conforme largura -->
+            <figure>
+                <picture>
+                    <source media="(max-width:750px)" srcset="img/portifolio3.png">
+                    <!-- imagem para dispositivos pequenos -->
+                    <source media="(max-width:1050px)" srcset="img/portifolio2.png">
+                    <!-- imagem para dispositivos médios -->
+                    <img src="img/portifolio1.png" alt="foto de perfil grande">
+                </picture>
+            </figure>
+        </div>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>© 2025 Conceição Ramos. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Script que controla o comportamento dos peixinhos (.fish) -->
+    <script src="script.js"></script>
+</body>
+</html>
+</html>

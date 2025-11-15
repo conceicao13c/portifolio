@@ -1,0 +1,157 @@
+/* ==========================
+   styles.css - comentários
+   Arquivo principal de estilos do portfólio
+   - Contém reset básico, layout (body/header/main/footer), seção de entrada
+   - Estilos para os elementos responsivos e animações
+   - Estilos para os peixinhos (`.fish`) que aparecem em cima do layout
+   ========================== */
+
+/* Google Fonts import (pode ser removido/alterado conforme necessário) */
+@import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Dancing+Script:wght@400..700&family=Momo+Signature&family=Mozilla+Headline:wght@200..700&family=Oswald:wght@200..700&family=Playwrite+HU&display=swap");
+
+/* Reset simples para margem, padding e box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY: configurado como coluna para empilhar header, main e footer.
+   Usamos `min-height: 100vh` para permitir que o gradiente se estenda
+   quando o conteúdo exceder a altura da janela.
+*/
+body {
+  background: linear-gradient(3deg,rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+  font-family: "Oswald",'Arial', sans-serif; /* fonte principal */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* NAVBAR / HEADER */
+.navbar {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+/* Mantemos header posicionado para poder controlar z-index */
+header { width: 100%; position: relative; z-index: 1000; }
+nav {
+  display: flex;
+  justify-content: flex-end; /* posiciona links no canto direito */
+  margin-bottom: 2rem;
+  padding-right: 2rem;
+}
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-right: 1.5rem;
+  font-size: 2rem;
+}
+nav a:hover { text-decoration: underline; }
+
+/* Tipografia base para parágrafos e título */
+p {
+  font-family: "Oswald",'Arial', sans-serif;
+  text-align: left;
+  line-height: 1.6;
+}
+h1 {
+  text-align: left;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+/* MAIN: área de conteúdo principal
+   - padding-bottom adiciona espaço para não ficar atrás do footer fixo
+*/
+main {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 4rem;
+  max-width: 1100px;
+  padding-bottom: 6rem;
+}
+/* Entrada: conteúdo com texto e imagem lado a lado */
+#entrada {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  gap: 5rem;
+}
+.texto { max-width: 65%; text-align: left; }
+.apresentacao { font-size: 1.9rem; }
+
+/* Figura responsiva: pequena margem para posicionamento */
+#entrada > figure { margin-left: 8px; }
+#entrada img { border-radius: 100%; }
+
+/* FOOTER: fixo na base, centralizado horizontalmente */
+footer {
+  text-align: center;
+  padding: 1rem 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* === Animação de aparição (zoomIn) aplicada a blocos ao carregar === */
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.8) translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* aplica animações com delays para nav / texto / figura / footer */
+nav { opacity: 0; animation: zoomIn 700ms ease-out 150ms both; }
+.texto { opacity: 0; animation: zoomIn 800ms ease-out 350ms both; }
+#entrada > figure { margin-left: auto; position: relative; right: -10%; opacity: 0; animation: zoomIn 800ms ease-out 650ms both; }
+footer { opacity: 0; animation: zoomIn 800ms ease-out 900ms both; }
+
+/* utilitário para desabilitar animações (por exemplo preferências de acessibilidade) */
+.no-anim nav, .no-anim .texto, .no-anim #entrada > figure, .no-anim footer { animation: none !important; opacity: 1 !important; }
+
+/* --- EFEITO PEIXES (Substitui bolinhas por imagem PNG) ---
+   Explicação:
+   - `.fish` são elementos vazios (divs) usados como receptáculo para a imagem
+   - O `script.js` posiciona cada `.fish` dinamicamente (fixed) e controla movimento
+   - Alterando width/height aqui alteramos o tamanho visual do peixe
+*/
+.fish {
+  position: fixed; /* permite posicionamento absoluto em relação à viewport */
+  width: 90px;     /* largura do peixe (aumentado conforme pedido) */
+  height: 66px;    /* altura do peixe (aumentado) */
+  background-image: url('img/peixe.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 4px;
+  transition: transform 0.2s ease-out;
+  pointer-events: none; /* não bloqueia cliques */
+}
+
+/* Animação de flutuação (caso ainda queira) - não obrigatória com movimento JS */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Media queries para layout móvel: empilha entrada e centraliza texto */
+@media screen and (max-width: 768px) {
+  #entrada { flex-direction: column; align-items: center; gap: 2rem; }
+  .texto { max-width: 100%; text-align: center; }
+  #entrada > figure { margin-left: 0; right: 0; }
+}
