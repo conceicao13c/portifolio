@@ -39,7 +39,7 @@ Tipografia usando Google Fonts (Oswald)
 Layout minimalista com foco na apresentação de forma clara
 
 Estrutura do Projeto
-/
+
 ├── index.html
 ├── styles.css
 ├── script.js
