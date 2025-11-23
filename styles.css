@@ -126,7 +126,7 @@ main {
 
 /* Figura responsiva: pequena margem para posicionamento */
 #entrada > figure { margin-left: 8px; }
-#entrada img { border-radius: 8px; max-width: 100%; height:auto; }
+#entrada img { border-radius: 8px; max-width: 100%;}
 
 /* FOOTER: fixo na base, centralizado horizontalmente */
 footer {
